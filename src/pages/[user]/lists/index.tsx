@@ -1,5 +1,5 @@
 import { Twitter } from "~/components/Twitter";
 
-const Tweet = Twitter;
+const Lists = Twitter;
 
-export default Tweet;
+export default Lists;
