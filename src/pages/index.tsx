@@ -38,11 +38,29 @@ export default function Index() {
   return (
     <>
       <Head>
+        <title>two</title>
         <meta charSet="utf-8" />
         <meta content="IE=edge" httpEquiv="X-UA-Compatible" />
         <meta content="width=device-width, initial-scale=1" name="viewport" />
         <meta name="robots" content="follow, index" />
         <link href="/favicon.ico" rel="shortcut icon" />
+        <meta
+          content="Generate a Twitter URL to share with OGP"
+          name="description"
+        />
+        <meta property="og:type" content="website" />
+        <meta property="og:site_name" content="two" />
+        <meta
+          property="og:description"
+          content="Generate a Twitter URL to share with OGP"
+        />
+        <meta property="og:title" content="two" />
+        <meta property="og:url" content="https://two.shuymn.me" />
+        <meta
+          property="og:image"
+          content="https://two.shuymn.me/default_og_image.jpg"
+        />
+        <meta name="twitter:card" content="summary" />
       </Head>
       <Flex bg="gray.100" w="100vw" h="100vh">
         <Center mb={["6rem", "8rem", "10rem", "12rem", "12rem"]} mx="auto">
