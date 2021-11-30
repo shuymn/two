@@ -4,6 +4,7 @@ import {
   Center,
   Flex,
   Input,
+  Text,
   useClipboard,
 } from "@chakra-ui/react";
 import Head from "next/head";
@@ -13,6 +14,7 @@ import { convert } from "~/lib/convert";
 export default function Index() {
   const [input, setInput] = useState("");
   const [converted, setConverted] = useState("");
+  const [errorMessage, setErrorMessage] = useState("");
   const { hasCopied, onCopy } = useClipboard(converted);
   const [isInvalid, setIsInvalid] = useState(false);
 
@@ -25,8 +27,10 @@ export default function Index() {
       if (value) {
         converted = convert(window.location.origin, value);
       }
+      setErrorMessage("");
       setIsInvalid(false);
-    } catch {
+    } catch (e) {
+      setErrorMessage(String(e));
       setIsInvalid(true);
     } finally {
       setConverted(converted);
@@ -71,6 +75,16 @@ export default function Index() {
             p={[3, 4, 4, 4, 4]}
             shadow="lg"
           >
+            <Text
+              id="error"
+              bg="transparent"
+              color="tomato"
+              hidden={errorMessage === ""}
+              mb="1rem"
+              p="0.25em"
+            >
+              {errorMessage}
+            </Text>
             <Flex>
               <Input
                 value={input}
@@ -79,6 +93,7 @@ export default function Index() {
                 errorBorderColor="red.200"
                 onChange={handleChange}
                 placeholder="Paste here"
+                aria-describedby="error"
               />
               <Button
                 onClick={handleClick}
